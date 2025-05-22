@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+Â  Â  <meta charset="UTF-8">
+Â  Â  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Â  Â  <title>SmartPanel SMM Dashboard</title>
+Â  Â  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+Â  Â  <link rel="stylesheet" href="css/style.css">
+Â  Â  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+Â  Â  <div class="dashboard-wrapper">
+Â  Â  Â  Â  <aside class="sidebar" id="sidebar">
+Â  Â  Â  Â  Â  Â  <div class="logo">
+Â  Â  Â  Â  Â  Â  Â  Â  <h1><span>SmartPanel</span></h1>
+Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  <nav class="sidebar-nav">
+Â  Â  Â  Â  Â  Â  Â  Â  <ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="menu-item active" data-section="dashboard-overview-view"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â Â 
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li class="has-submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <a href="#" class="menu-item-toggle"><i class="fas fa-shopping-cart"></i> <span>Orders & Services</span> <i class="fas fa-chevron-down submenu-icon"></i></a>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <ul class="submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="new-order-view"><i class="fas fa-plus-circle"></i> New Order</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="my-orders-view"><i class="fas fa-list-alt"></i> My Orders</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="services-view"><i class="fas fa-clipboard-list"></i> Services List</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </li>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li class="has-submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <a href="#" class="menu-item-toggle"><i class="fas fa-wallet"></i> <span>Finances</span> <i class="fas fa-chevron-down submenu-icon"></i></a>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <ul class="submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="add-funds-view"><i class="fas fa-money-bill-wave"></i> Add Funds</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="transactions-view"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </li>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li class="has-submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <a href="#" class="menu-item-toggle"><i class="fas fa-headset"></i> <span>Support</span> <i class="fas fa-chevron-down submenu-icon"></i></a>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <ul class="submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="new-ticket-view"><i class="fas fa-life-ring"></i> New Ticket</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="my-tickets-view"><i class="fas fa-ticket-alt"></i> My Tickets</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </li>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li class="has-submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <a href="#" class="menu-item-toggle"><i class="fas fa-user-circle"></i> <span>Account</span> <i class="fas fa-chevron-down submenu-icon"></i></a>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <ul class="submenu">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="profile-view"><i class="fas fa-user"></i> Profile</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="submenu-item" data-section="api-docs-view"><i class="fas fa-code"></i> API Docs</a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </li>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="menu-item" data-section="announcements-view"><i class="fas fa-bullhorn"></i> <span>Announcements</span></a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li><a href="#" class="menu-item" id="logout-link"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+Â  Â  Â  Â  Â  Â  Â  Â  </ul>
+Â  Â  Â  Â  Â  Â  </nav>
+Â  Â  Â  Â  </aside>
+
+
+Â  Â  Â  Â  <main class="main-content" id="main-content">
+Â  Â  Â  Â  Â  Â  <header class="header">
+Â  Â  Â  Â  Â  Â  Â  Â  <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+Â  Â  Â  Â  Â  Â  Â  Â  <div class="user-info">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <span class="username">Hello, Admin</span>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="user-avatar">AD</div>
+Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  </header>
+
+
+Â  Â  Â  Â  Â  Â  <div class="content-area" id="content-area">
+Â  Â  Â  Â  Â  Â  Â  Â  <section id="dashboard-overview-view" class="content-section active-section">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h1 class="section-title">Dashboard</h1>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <section class="cards" aria-label="Key Metrics">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card" tabindex="0" role="region" aria-label="Total Orders">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-title">Total Orders</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-value" id="totalOrders">2,345</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8v-10h-8v10zm0-18v6h8V3h-8z"/></svg>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card" tabindex="0" role="region" aria-label="Active Services">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-title">Active Services</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-value" id="activeServices">14</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v2H4zM4 10h16v2H4zM4 14h10v2H4z"/></svg>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card" tabindex="0" role="region" aria-label="Pending Orders">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-title">Pending Orders</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-value" id="pendingOrders">87</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7H3v10h18V7zM3 5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H3zm3 6h12v2H6v-2z"/></svg>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card" tabindex="0" role="region" aria-label="Total Earnings">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-title">Total Earnings</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card-value" id="totalEarnings">$12,580</div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1C5.935 1 1 5.935 1 12s4.935 11 11 11 11-4.935 11-11S18.065 1 12 1zm1 15h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </section>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <section class="analytics-section" aria-label="Orders Analytics">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="analytics-header">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h2>Orders Analytics</h2>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <select id="timeRangeSelect" class="analytic-select" aria-label="Filter Analytics by Time Range">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="7">Last 7 Days</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="30" selected>Last 30 Days</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="90">Last 90 Days</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </select>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <canvas id="ordersChart" aria-label="Orders Statistics Chart" role="img"></canvas>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </section>
+Â  Â  Â  Â  Â  Â  Â  Â  </section>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  <section id="new-order-view" class="content-section" style="display: none;">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h2>Place New Order</h2>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>Select a service category and service to place a new order.</p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="add-funds-container">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card order-form-card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <form>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="category">Category</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <select id="category" name="category">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="">-- Select Category --</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="instagram">Instagram Services</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="youtube">YouTube Services</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </select>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="service">Service</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <select id="service" name="service">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="">-- Select Service --</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="ig-followers">Instagram Followers - High Quality</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="yt-views">YouTube Views - Real</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </select>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="link">Link</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <input type="url" id="link" name="link" placeholder="Enter link (e.g., Instagram profile URL)" required>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="quantity">Quantity</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <input type="number" id="quantity" name="quantity" min="100" placeholder="Minimum 100" required>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <small>Min: 100, Max: 10,000</small>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â Â 
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div id="drip-feed-group" class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <input type="checkbox" id="drip-feed-checkbox">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="drip-feed-checkbox">Drip Feed</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <small>Run this order in multiple small deliveries over time.</small>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div id="drip-feed-options" style="display:none;">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group mt-10">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="runs">Runs</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <input type="number" id="runs" min="2" max="10" value="2">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <small>How many separate runs (e.g., 2 runs for 500 quantity means 2x250)</small>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="interval">Interval (Hours)</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <input type="number" id="interval" min="1" max="24" value="1">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <small>Time between each run (e.g., 1 hour)</small>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="order-summary-box">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>Total Cost: <span class="total-cost">NGN 0.00</span></p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <button type="submit" class="btn btn-primary btn-block mt-20">Place Order</button>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </form>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div> <div class="card service-description-card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h3>Service Details:</h3>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p><strong>Instagram Followers - High Quality:</strong></p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li>Start Time: 0-1 Hour</li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li>Speed: 1K-5K/Day</li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li>Quality: Real-looking, good retention</li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <li>Guaranteed: Yes, 30 days refill</li>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </ul>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>Please ensure your account is public before placing the order.</p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div> </div> </div> </section>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  <section id="my-orders-view" class="content-section" style="display: none;">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h2>My Orders</h2>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>View the status and details of your past and current orders.</p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="table-responsive">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <table class="table orders-table">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <thead>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>ID</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Date</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Service</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Link</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Quantity</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Progress</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Status</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </thead>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tbody>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>#1001</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>2024-05-20</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>Instagram Followers</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>instagram.com/user1</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>1000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>500/1000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td><span class="status-processing">Processing</span></td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>#1002</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>2024-05-18</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>YouTube Views</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>youtube.com/video1</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>5000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>5000/5000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td><span class="status-completed">Completed</span></td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tbody>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </table>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="pagination-controls">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <button class="btn btn-secondary btn-sm">Previous</button>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <span>Page 1 of 5</span>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <button class="btn btn-secondary btn-sm">Next</button>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div> </section>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  <section id="services-view" class="content-section" style="display: none;">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h2>Available Services</h2>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>Browse our list of services and their details.</p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="table-responsive">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <table class="table services-table">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <thead>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>ID</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Category</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Service Name</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Rate/1K</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Min Order</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Max Order</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Description</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </thead>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tbody>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>S001</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>Instagram</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>Instagram Followers [HQ]</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>NGN 1500</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>100</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>10000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>High quality followers, instant start, 30 days refill.</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>S002</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>YouTube</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>YouTube Views [Real]</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>NGN 2000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>500</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>50000</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>Real views, slow drip, good retention.</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tbody>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </table>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="pagination-controls">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <button class="btn btn-secondary btn-sm">Previous</button>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <span>Page 1 of 1</span>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <button class="btn btn-secondary btn-sm">Next</button>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div> </section>
+
+
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  <section id="add-funds-view" class="content-section" style="display: none;">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h2>Add Funds</h2>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>Top up your balance using your preferred payment method.</p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <form>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="amount">Amount (NGN)</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <input type="number" id="amount" name="amount" min="100" placeholder="Minimum NGN 100" required>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="form-group">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <label for="payment-method">Payment Method</label>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <select id="payment-method" name="payment-method">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="">-- Select Method --</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="bank-transfer">Bank Transfer</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <option value="card">Credit/Debit Card (Paystack)</option>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </select>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <button type="submit" class="btn btn-primary btn-block">Proceed to Payment</button>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </form>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </div> </section>
+
+
+Â  Â  Â  Â  Â  Â  Â  Â  <section id="transactions-view" class="content-section" style="display: none;">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="card">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <h2>Transactions</h2>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <p>Review your transaction history.</p>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <div class="table-responsive">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <table class="table transactions-table">
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <thead>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>ID</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Date</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Type</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Amount</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Status</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <th>Method</th>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  </thead>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tbody>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <tr>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>TRX001</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>2024-05-20</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  <td>Deposit</td>
+Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â Â 
